@@ -11,12 +11,6 @@ def upload_file(args):
     s3 = boto3.client('s3')
     s3.upload_file(args.file, args.name, args.file)
 
-def sign_url(args):
-    s3 = boto3.client('s3')
-    signed_url = s3.generate_presigned_url(ClientMethod="get_object", ExpiresIn=3600,
-                                            Params={args.sign-file, "Key": args.file})
-    print(signed_url)
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Create a bucket s3")
     parser.add_argument("-n", "--name", metavar="NAME", help="Name of the bucket")
@@ -25,4 +19,3 @@ if __name__ == '__main__':
     args = parser.parse_args()
     create_bucket(args)
     upload_file(args)
-    sign_url(args)
