@@ -1,0 +1,7 @@
+#for delete the provisioned infra, use the vpc_destroy
+
+python3 vpc_destroy.py --vpc_id vpc-0ad4d525f3faf1b74 --region us-east-1 --services ec2
+
+#and use for delete the key-pair
+
+aws ec2 delete-key-pair --key-name ec2-keypair
